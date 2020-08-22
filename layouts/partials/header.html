@@ -1,0 +1,13 @@
+<header id="site-header">
+    <div class="header-wrapper">
+        <div class="site-home">
+            <a href="{{.Site.BaseURL}}" title="home">{{ partial "fontawesome.html" "home" }}</a>
+        </div>
+        <nav class="site-nav">
+            {{ partialCached "menu.html" . }}
+        </nav>
+        {{ partial "links.html"  . }}
+    </div>
+
+    {{ partial "pagination.html" . }}
+</header>

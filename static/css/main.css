@@ -1,0 +1,412 @@
+:root {
+  --background: white;
+  --color: black;
+  --separator: #F0F0F0;
+  --code: #FAFAFA;
+  --markup: #999;
+  --header-markup: #CCC;
+  --pagination: #666;
+  --hover: #C00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: black;
+    --color: white;
+    --separator: #333;
+    --code: #111;
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  font-family: "Fira Code", Consolas, Monaco, "Ubuntu Mono", monospace;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+  font-variant-ligatures: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-color: var(--background);
+  color: var(--color);
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
+  font-variant-ligatures: normal;
+}
+
+h1, h2, h3, h4, h5, h6, p, pre, blockquote, form, ul, ol, dl {
+  margin: 20px 0;
+}
+
+li, blockquote {
+  margin-left: -1ch;
+}
+
+dd {
+  margin-left: 2ch;
+  margin-bottom: 2ex;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  font-size: 1.2rem;
+  padding: 1ch 0 0;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+header .site-home {
+  float: left;
+  margin: 0 2ch 0 1ch;
+}
+
+header .site-nav a {
+  float: left;
+  margin: 0 1ch 0 0;
+}
+
+header .site-nav a::after {
+  content: "•";
+  color: var(--header-markup);
+  margin-left: 1ch;
+}
+
+header .site-nav a:last-child::after {
+  content: "";
+}
+
+header .links {
+  display: block;
+  float: right;
+  padding: 0 1ch;
+}
+
+header .links a {
+  padding-left: 1ch;
+}
+
+header::after {
+  display: block;
+  clear: both;
+}
+
+main {
+  display: block;
+  clear: both;
+  max-width: 80ch;
+  margin: auto;
+  padding: 1ch;
+}
+
+a[href] {
+  color: var(--color);
+}
+
+a[href]:hover {
+  color: var(--hover);
+}
+
+main a[href]::before, .permalink a[href]::before {
+  content: "[";
+  color: var(--markup);
+}
+
+main a[href]::after, .permalink a[href]::after {
+  content: "]";
+  color: var(--markup);
+}
+
+main a[href]:hover::after, .permalink a[href]:hover::after {
+  content: "](" attr(href) ")";
+  color: var(--markup);
+  position: absolute;
+  display: inline-block;
+  background-color: var(--background);
+  z-index: 10;
+}
+
+.tags a[href]::before, .tags a[href]::after, .tags a[href]:hover::after {
+  content: "";
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h1::before {
+  content: "# ";
+  font-size: 1rem;
+  color: var(--header-markup);
+}
+
+h2 {
+  font-size: 1.3rem;
+}
+
+h2::before {
+  content: "## ";
+  font-size: 1rem;
+  color: var(--header-markup);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h3::before {
+  content: "### ";
+  font-size: 1rem;
+  color: var(--header-markup);
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+h4::before {
+  content: "#### ";
+  font-size: 1rem;
+  color: var(--header-markup);
+}
+
+b::before, b::after, strong::before, strong::after {
+  content: "**";
+  font-weight: normal;
+  color: var(--markup);
+}
+
+i::before, i::after, em::before, em::after {
+  content: "/";
+  font-style: normal;
+  color: var(--markup);
+}
+
+u::before, u::after {
+  content: "__";
+  font-style: normal;
+  color: var(--markup);
+}
+
+s, del {
+  text-decoration-color: var(--markup) !important;
+}
+
+s::before, s::after, del::before, del::after {
+  content: "~~";
+  color: var(--markup);
+}
+
+code {
+  background-color: var(--code);
+  border: 2px solid var(--separator);
+}
+
+code::before, code::after {
+  content: "`";
+  color: var(--markup);
+}
+
+pre {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+pre code {
+  border: none;
+}
+
+pre code::before {
+  content: "˴˴˴" attr(data-lang) "\A";
+  font-size: 0.8em;
+  position: sticky;
+  left: 0;
+  color: var(--markup);
+}
+
+pre code::after {
+  content: "˴˴˴";
+  font-size: 0.8em;
+  position: sticky;
+  left: 0;
+  color: var(--markup);
+}
+
+.chroma {
+  background-color: var(--code) !important;
+  border: 2px solid var(--separator);
+  padding: 0 1ch;
+  margin: 1ch 0;
+}
+
+ul {
+  margin-left: 3ch;
+  padding: 0;
+  list-style: none;
+}
+
+ol {
+  margin-left: 4ch;
+  padding: 0;
+  list-style: none;
+}
+
+li ul, li ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul>li::before {
+  float: left;
+  margin-left: -2ch;
+  content: "-";
+}
+
+ol {
+  counter-reset: rmd-ol;
+}
+
+ol>li {
+  counter-increment: rmd-ol;
+}
+
+ol>li::before {
+  float: left;
+  margin-left: -3ch;
+  min-width: 3ch;
+  content: counter(rmd-ol) ".";
+}
+
+dd::before {
+  content: ": ";
+  margin-left: -2ch;
+  color: var(--markup);
+}
+
+input[type="checkbox"] {
+  color: var(--color);
+  position: relative;
+  left: -999ch;
+  bottom: 0.2em;
+  font-size: 0.9rem;
+}
+
+input[type="checkbox"]::after {
+  content: "[\a0] ";
+  position: relative;
+  left: 998ch;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "[x] ";
+  position: relative;
+  left: 998ch;
+}
+
+blockquote>* {
+  margin-left: 3ch;
+}
+
+blockquote>*::before {
+  content: "> ";
+  float: left;
+  margin-left: -2ch;
+  margin-right: 1ch;
+}
+
+.header-wrapper {
+  overflow: hidden;
+  border-bottom: 2px solid var(--separator);
+  padding-bottom: 0.4rem;
+}
+
+header .pagination {
+  border-bottom: 2px solid var(--separator);
+}
+
+footer .pagination {
+  border-top: 2px solid var(--separator);
+}
+
+.pagination {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  clear: both;
+  padding: 1ch;
+  font-size: 0.9rem;
+}
+
+.pagination .button {
+  display: inline-block;
+}
+
+.pagination .button .button__icon {
+  display: none;
+}
+
+.pagination .button.previous {
+  float: left;
+  padding-left: 1ch;
+}
+
+.pagination .button.previous a::before {
+  content: "<<";
+}
+
+.pagination .button.next {
+  float: right;
+  padding-right: 1ch;
+}
+
+.pagination .button.next a::after {
+  content: ">>";
+}
+
+hr {
+  clear: both;
+}
+
+.page {
+  display: block;
+  clear: both;
+}
+
+.meta {
+  margin-top: 6ex;
+  margin-bottom: 1ex;
+  font-size: 0.9rem;
+}
+
+.meta .tags {
+  float: right;
+  color: var(--markup);
+}
+
+footer {
+  padding-top: 1ch;
+}
+
+.inline-svg {
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  top: 0.15rem;
+  position: relative;
+}
+
+.inline-svg svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}

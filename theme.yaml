@@ -1,0 +1,26 @@
+name: remark
+homepage: https://github.com/isometry/hugo-theme-remark/
+description: "A minimal Markdown-style theme for hugo"
+
+license: MIT
+licenselink: https://github.com/isometry/hugo-theme-remark/blob/master/LICENSE
+
+tags:
+  - blog
+  - clean
+  - dark
+  - highlighting
+  - minimal
+  - monospace
+  - responsive
+  - simple
+
+features:
+  - blog
+  - syntax highlighting
+
+min_version: "0.41"
+
+author:
+  name: Robin Breathe
+  homepage: https://just.breathe.io/

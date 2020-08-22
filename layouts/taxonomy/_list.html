@@ -1,0 +1,16 @@
+{{ define "main" }}
+<main>
+    <article class="post">
+        <div class="post-content">
+            <h1 class="post-title">{{.Title}}</h1>
+
+            {{.Content}}
+        </div>
+    </article>
+    <ul class="posts">
+        {{ range .Data.Terms.Alphabetical }}
+        <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</li>
+        {{ end }}
+    </ul>
+</main>
+{{ end }}
