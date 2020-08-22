@@ -2,6 +2,14 @@
 <main>
     <article class="post">
         <div class="post-content">
+            {{ if .Params.shields }}
+            <div class="shields">
+                {{ range .Params.shields }}
+                <img src="{{ . }}" />
+                {{ end }}
+            </div>
+            {{ end }}
+
             <h1 class="post-title">
                 {{ if .Params.repolink }}
                 <a href="{{ .Params.repolink }}" target="_blank" rel="noopener me" title="{{ .Params.repolink }}"

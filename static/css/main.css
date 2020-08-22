@@ -252,6 +252,11 @@ pre code::after {
   color: var(--markup);
 }
 
+.shields {
+  float: right;
+  text-align: right
+}
+
 .chroma {
   background-color: var(--code) !important;
   border: 2px solid var(--separator);
