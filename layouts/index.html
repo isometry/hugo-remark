@@ -1,8 +1,5 @@
 {{ define "main" }}
 <main class="home">
-    <h1 id="home-title">{{ .Site.Title }}</h1>
-    {{- with .Site.Params.homeSubtitle }}
-    <h2 id="home-subtitle">{{.}}</h2>
-    {{- end }}
+    <h1 id="home-title">{{ .Site.Title }} {{ .Site.Params.homeSubtitle }}</h1>
 </main>
 {{ end }}

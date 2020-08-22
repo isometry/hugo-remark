@@ -26,8 +26,8 @@ html {
   box-sizing: inherit;
   font-family: "Fira Code", Consolas, Monaco, "Ubuntu Mono", monospace;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
-  font-variant-ligatures: normal;
+  font-feature-settings: normal;
+  font-variant-ligatures: normal
 }
 
 body {
