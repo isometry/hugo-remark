@@ -2,8 +2,21 @@
 <main>
     <article class="post">
         <div class="post-content">
-            <h1 class="post-title">{{ .Title | markdownify }}</h1>
+            <h1 class="post-title">
+                {{ if .Params.repolink }}
+                <a href="{{ .Params.repolink }}" target="_blank" rel="noopener me" title="{{ .Params.repolink }}"
+                    class=repolink>
+                    {{ .Title | markdownify }}
+                    {{ partial "fontawesome.html" (default "github" .Params.repohost) }}</a>
+                {{ else }}
+                {{ .Title | markdownify }}
+                {{ end }}
+            </h1>
+            {{ if .Content }}
             {{ .Content }}
+            {{ else }}
+            {{ .Description }}
+            {{ end }}
         </div>
 
         <div class="meta">
@@ -12,6 +25,9 @@
                 title="Published: {{ .PublishDate.Format "2006-01-02T15:04Z" }}{{ if .Lastmod }}; Last Modified: {{ .Lastmod.Format "2006-01-02T15:04Z" }}{{ end }}">
                 {{ .Date.Format "2006-01-02" }}
             </span>
+            {{ end }}
+            {{ if .Params.repolink }}
+            <span class="repository"><a href="{{ .Params.repolink }}" rel="bookmark">Repository</a></span>
             {{ end }}
             <span class="permalink"><a href="{{ .Permalink }}" rel="bookmark">Permalink</a></span>
             {{ if .Params.tags }}

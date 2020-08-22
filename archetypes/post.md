@@ -1,9 +1,7 @@
-+++
-title = ""
-date = ""
-author = ""
-cover = ""
-tags = [""]
-description = ""
-showFullContent = true
-+++
+---
+title: ""
+description: ""
+date: ""
+author: ""
+tags: []
+---

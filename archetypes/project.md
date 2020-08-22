@@ -1,8 +1,9 @@
-+++
-title = ""
-description = ""
-date = ""
-author = ""
-cover = ""
-tags = [""]
-+++
+---
+title: ""
+description: ""
+repohost: ""
+repolink: ""
+date: ""
+author: ""
+tags: []
+---

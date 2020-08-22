@@ -1,0 +1,24 @@
+{{ define "main" }}
+<main>
+    <article class="page">
+        <div class="page-content">
+            <h1 class="page-title">{{.Title}}</h1>
+            {{.Content}}
+        </div>
+    </article>
+    <dl class="contents">
+        {{ range .Pages }}
+        <dt>
+            <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+            {{ if .Params.repolink }}
+            <a href="{{ .Params.repolink }}" target="_blank" rel="noopener me" title="{{ .Params.repolink }}"
+                class=repolink>{{ partial "fontawesome.html" (default "github" .Params.repohost) }}</a>
+            {{ end }}
+        </dt>
+        {{ if .Description }}
+        <dd>{{ .Description }}</dd>
+        {{ end }}
+        {{ end }}
+    </dl>
+</main>
+{{ end }}

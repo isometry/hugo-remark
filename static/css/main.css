@@ -53,6 +53,7 @@ li, blockquote {
 dd {
   margin-left: 2ch;
   margin-bottom: 2ex;
+  font-size: 0.9rem
 }
 
 a {
@@ -135,6 +136,14 @@ main a[href]:hover::after, .permalink a[href]:hover::after {
   display: inline-block;
   background-color: var(--background);
   z-index: 10;
+}
+
+a[href].repolink svg {
+  height: 1em;
+}
+
+a[href].repolink::before, a[href].repolink::after, a[href].repolink:hover::after {
+  content: "";
 }
 
 .tags a[href]::before, .tags a[href]::after, .tags a[href]:hover::after {
