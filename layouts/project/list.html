@@ -9,7 +9,7 @@
     <dl class="contents">
         {{ range .Pages }}
         <dt>
-            <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+            <a href="{{ .RelPermalink }}">{{ default .Title .LinkTitle | markdownify }}</a>
             {{ if .Params.repolink }}
             <a href="{{ .Params.repolink }}" target="_blank" rel="noopener me" title="{{ .Params.repolink }}"
                 class=repolink>{{ partial "fontawesome.html" (default "github" .Params.repohost) }}</a>

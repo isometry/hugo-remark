@@ -8,7 +8,7 @@
     </article>
     <ul class="contents">
         {{ range .Paginator.Pages }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></li>
+        <li><a href="{{ .RelPermalink }}">{{ default .Title .LinkTitle | markdownify }}</a></li>
         {{ end }}
     </ul>
 </main>

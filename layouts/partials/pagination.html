@@ -4,14 +4,14 @@
     <div class="button previous">
         <a href="{{ .PrevInSection.RelPermalink }}" rel="prev">
             <span class="button__icon">←</span>
-            <span class="button__text">{{ .PrevInSection.Title }}</span>
+            <span class="button__text">{{ default .PrevInSection.Title .PrevInSection.LinkTitle }}</span>
         </a>
     </div>
     {{ end }}
     {{ if .NextInSection }}
     <div class="button next">
         <a href="{{ .NextInSection.RelPermalink }}" rel="next">
-            <span class="button__text">{{ .NextInSection.Title }}</span>
+            <span class="button__text">{{ default .NextInSection.Title .NextInSection.LinkTitle }}</span>
             <span class="button__icon">→</span>
         </a>
     </div>
