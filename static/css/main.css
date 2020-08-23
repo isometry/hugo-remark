@@ -129,13 +129,24 @@ main a[href]::after, .permalink a[href]::after {
   color: var(--markup);
 }
 
-main a[href]:hover::after, .permalink a[href]:hover::after {
-  content: "](" attr(href) ")";
-  color: var(--markup);
-  position: absolute;
-  display: inline-block;
-  background-color: var(--background);
-  z-index: 10;
+@media(hover: none) {
+  main a[href]::after {
+    content: "](⚓︎)";
+    color: var(--markup);
+    display: inline-block;
+    background-color: var(--background);
+  }
+}
+
+@media(hover: hover) and (pointer: fine) {
+  main a[href]:hover::after, .permalink a[href]:hover::after {
+    content: "](" attr(href) ")";
+    color: var(--markup);
+    position: absolute;
+    display: inline-block;
+    background-color: var(--background);
+    z-index: 10;
+  }
 }
 
 a[href].repolink svg {
