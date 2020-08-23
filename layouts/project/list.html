@@ -3,7 +3,11 @@
     <article class="page">
         <div class="page-content">
             <h1 class="page-title">{{.Title}}</h1>
-            {{.Content}}
+            {{ if .Content }}
+            {{ .Content }}
+            {{ else }}
+            {{ .Description | markdownify }}
+            {{ end }}
         </div>
     </article>
     <dl class="contents">
@@ -16,7 +20,7 @@
             {{ end }}
         </dt>
         {{ if .Description }}
-        <dd>{{ .Description }}</dd>
+        <dd>{{ .Description | markdownify }}</dd>
         {{ end }}
         {{ end }}
     </dl>

@@ -23,7 +23,7 @@
             {{ if .Content }}
             {{ .Content }}
             {{ else }}
-            {{ .Description }}
+            {{ .Description | markdownify }}
             {{ end }}
         </div>
 
