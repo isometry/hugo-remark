@@ -129,14 +129,14 @@ main a[href]::after, .permalink a[href]::after {
   color: var(--markup);
 }
 
-@media(hover: none) {
+/* @media(hover: none) {
   main a[href]::after {
-    content: "](⚓︎)";
+    content: "]₍₎";
     color: var(--markup);
     display: inline-block;
     background-color: var(--background);
   }
-}
+} */
 
 @media(hover: hover) and (pointer: fine) {
   main a[href]:hover::after, .permalink a[href]:hover::after {
