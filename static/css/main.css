@@ -1,6 +1,7 @@
 :root {
   --background: white;
-  --color: black;
+  --heading: #333;
+  --text: black;
   --separator: #F0F0F0;
   --code: #FAFAFA;
   --markup: #999;
@@ -12,7 +13,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: black;
-    --color: white;
+    --heading: #CCC;
+    --text: white;
     --separator: #333;
     --code: #111;
   }
@@ -36,7 +38,7 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   background-color: var(--background);
-  color: var(--color);
+  color: var(--text);
   text-rendering: optimizeLegibility;
   font-feature-settings: "liga", "tnum", "case", "calt", "zero", "ss01", "locl";
   font-variant-ligatures: normal;
@@ -112,7 +114,7 @@ main {
 }
 
 a[href] {
-  color: var(--color);
+  color: var(--text);
 }
 
 a[href]:hover {
@@ -161,6 +163,10 @@ a[href].repolink::before, a[href].repolink::after, a[href].repolink:hover::after
   content: "";
 }
 
+h1, h2, h3, h4 {
+  color: var(--heading);
+}
+
 h1 {
   font-size: 1.5rem;
 }
@@ -199,6 +205,21 @@ h4::before {
   content: "#### ";
   font-size: 1rem;
   color: var(--header-markup);
+}
+
+@media (min-width: 100ch) {
+  h1::before {
+    margin-left: -2ch;
+  }
+  h2::before {
+    margin-left: -3ch;
+  }
+  h3::before {
+    margin-left: -4ch;
+  }
+  h4::before {
+    margin-left: -5ch;
+  }
 }
 
 b::before, b::after, strong::before, strong::after {
@@ -295,7 +316,8 @@ li ul, li ol {
 ul>li::before {
   float: left;
   margin-left: -2ch;
-  content: "-";
+  content: "*";
+  color: var(--markup);
 }
 
 ol {
@@ -320,7 +342,7 @@ dd::before {
 }
 
 input[type="checkbox"] {
-  color: var(--color);
+  color: var(--text);
   position: relative;
   left: -999ch;
   bottom: 0.2em;
@@ -345,6 +367,7 @@ blockquote>* {
 
 blockquote>*::before {
   content: "> ";
+  color: var(--markup);
   float: left;
   margin-left: -2ch;
   margin-right: 1ch;
@@ -387,7 +410,8 @@ footer .pagination {
 }
 
 .pagination .button.previous a::before {
-  content: "<<";
+  content: "<-";
+  color: var(--markup);
 }
 
 .pagination .button.next {
@@ -396,7 +420,8 @@ footer .pagination {
 }
 
 .pagination .button.next a::after {
-  content: ">>";
+  content: "->";
+  color: var(--markup);
 }
 
 hr {
