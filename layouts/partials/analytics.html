@@ -1,3 +1,3 @@
-{{ if and (not .Site.IsServer) (.Site.GoogleAnalytics) }}
-{{ template "_internal/google_analytics_async.html" . }}
+{{ if and hugo.IsProduction (site.Config.Services.GoogleAnalytics.ID) }}
+{{ template "_internal/google_analytics.html" . }}
 {{ end }}
