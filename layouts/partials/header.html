@@ -1,13 +1,20 @@
 <header id="site-header">
-    <div class="header-wrapper">
-        <div class="site-home">
-            <a href="{{.Site.BaseURL}}" title="home">{{ partial "fontawesome.html" "home" }}</a>
-        </div>
-        <nav class="site-nav">
-            {{ partialCached "menu.html" . }}
-        </nav>
-        {{ partial "links.html"  . }}
+  <div class="header-wrapper">
+    <div class="site-home">
+      <a
+        href="{{.Site.BaseURL}}"
+        title="Go to homepage"
+        aria-label="Go to homepage"
+      >
+        {{ partial "fontawesome.html" "home" }}
+        <span class="sr-only">Home</span>
+      </a>
     </div>
+    <nav class="site-nav" role="navigation" aria-label="Main navigation">
+      {{ partialCached "menu.html" . }}
+    </nav>
+    {{ partial "links.html" . }}
+  </div>
 
-    {{ partial "pagination.html" . }}
+  {{ partial "pagination.html" . }}
 </header>

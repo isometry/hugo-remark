@@ -1,23 +1,20 @@
 {{ define "main" }}
 <main>
-    <article class="post">
-        <div class="post-content">
-            <h1 class="post-title">{{.Title}}</h1>
+  <article class="post">
+    <div class="post-content">
+      <h1 class="post-title">{{.Title}}</h1>
 
-            {{.Content}}
-        </div>
-    </article>
-    <ul class="posts">
-        {{ with ($.Site.GetPage (printf "/%s" "tags")) }}
-        {{ range .Pages }}
-        <li>
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-        </li>
-        {{ end }}
-        {{ end }}
-        {{ range .Data.Pages }}
-        <li><a href="{{ .Permalink }}">{{ .Title }}</a> {{ .Count }}</li>
-        {{ end }}
-    </ul>
+      {{.Content}}
+    </div>
+  </article>
+  <ul class="posts">
+    {{ with ($.Site.GetPage (printf "/%s" "tags")) }} {{ range .Pages }}
+    <li>
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }} {{ end }} {{ range .Data.Pages }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a> {{ .Count }}</li>
+    {{ end }}
+  </ul>
 </main>
 {{ end }}

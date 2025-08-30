@@ -1,21 +1,18 @@
 {{ define "main" }}
 <main>
-    <article class="taxonomy">
-        <div class="taxonomy-content">
-            <h1 class="taxonomy-title">{{singularize .Type}} := {{.Title}}</h1>
-            {{ if .Description }}
-            {{ .Description | markdownify }}
-            {{ end }}
-            {{ .Content }}
-            {{ range .Data.Pages.GroupBy "Section" "asc" }}
-            <h2>{{ pluralize .Key }}</h2>
-            <ul class="taxonomy">
-                {{ range .Pages.ByTitle }}
-                <li><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></li>
-                {{ end }}
-            </ul>
-            {{ end }}
-        </div>
-    </article>
+  <article class="taxonomy">
+    <div class="taxonomy-content">
+      <h1 class="taxonomy-title">{{singularize .Type}} := {{.Title}}</h1>
+      {{ if .Description }} {{ .Description | markdownify }} {{ end }} {{
+      .Content }} {{ range .Data.Pages.GroupBy "Section" "asc" }}
+      <h2>{{ pluralize .Key }}</h2>
+      <ul class="taxonomy">
+        {{ range .Pages.ByTitle }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></li>
+        {{ end }}
+      </ul>
+      {{ end }}
+    </div>
+  </article>
 </main>
 {{ end }}

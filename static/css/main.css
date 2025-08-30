@@ -2,21 +2,25 @@
   --background: white;
   --heading: #333;
   --text: black;
-  --separator: #F0F0F0;
-  --code: #FAFAFA;
+  --separator: #f0f0f0;
+  --code: #fafafa;
   --markup: #999;
-  --header-markup: #CCC;
+  --header-markup: #ccc;
   --pagination: #666;
-  --hover: #C00;
+  --hover: #c00;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: black;
-    --heading: #CCC;
+    --heading: #ccc;
     --text: white;
     --separator: #333;
     --code: #111;
+    --markup: #666;
+    --header-markup: #555;
+    --pagination: #aaa;
+    --hover: #f44;
   }
 }
 
@@ -24,12 +28,11 @@ html {
   box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
   font-family: "Fira Code", Consolas, Monaco, "Ubuntu Mono", monospace;
-  text-rendering: optimizeLegibility;
-  font-feature-settings: normal;
-  font-variant-ligatures: normal
 }
 
 body {
@@ -44,18 +47,64 @@ body {
   font-variant-ligatures: normal;
 }
 
-h1, h2, h3, h4, h5, h6, p, pre, blockquote, form, ul, ol, dl {
+.skip-to-content {
+  position: absolute;
+  left: -999px;
+  width: 1px;
+  height: 1px;
+  top: auto;
+  background-color: var(--background);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border: 2px solid var(--separator);
+  z-index: 999;
+}
+
+.skip-to-content:focus {
+  left: 6px;
+  top: 7px;
+  width: auto;
+  height: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+blockquote,
+form,
+ul,
+ol,
+dl {
   margin: 20px 0;
 }
 
-li, blockquote {
+li,
+blockquote {
   margin-left: -1ch;
 }
 
 dd {
   margin-left: 2ch;
   margin-bottom: 2ex;
-  font-size: 0.9rem
+  font-size: 0.9rem;
 }
 
 a {
@@ -121,27 +170,21 @@ a[href]:hover {
   color: var(--hover);
 }
 
-main a[href]::before, .permalink a[href]::before {
+main a[href]::before,
+.permalink a[href]::before {
   content: "[";
   color: var(--markup);
 }
 
-main a[href]::after, .permalink a[href]::after {
+main a[href]::after,
+.permalink a[href]::after {
   content: "]";
   color: var(--markup);
 }
 
-/* @media(hover: none) {
-  main a[href]::after {
-    content: "]₍₎";
-    color: var(--markup);
-    display: inline-block;
-    background-color: var(--background);
-  }
-} */
-
-@media(hover: hover) and (pointer: fine) {
-  main a[href]:hover::after, .permalink a[href]:hover::after {
+@media (hover: hover) and (pointer: fine) {
+  main a[href]:hover::after,
+  .permalink a[href]:hover::after {
     content: "](" attr(href) ")";
     color: var(--markup);
     position: absolute;
@@ -155,15 +198,24 @@ a[href].repolink svg {
   height: 1em;
 }
 
-a[href].repolink::before, a[href].repolink::after, a[href].repolink:hover::after {
+a[href].repolink::before,
+a[href].repolink::after,
+a[href].repolink:hover::after {
   content: "";
 }
 
-.tags a[href]::before, .tags a[href]::after, .tags a[href]:hover::after {
+.tags a[href]::before,
+.tags a[href]::after,
+.tags a[href]:hover::after {
   content: "";
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--heading);
 }
 
@@ -207,6 +259,26 @@ h4::before {
   color: var(--header-markup);
 }
 
+h5 {
+  font-size: 1.05rem;
+}
+
+h5::before {
+  content: "##### ";
+  font-size: 1rem;
+  color: var(--header-markup);
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+h6::before {
+  content: "###### ";
+  font-size: 1rem;
+  color: var(--header-markup);
+}
+
 @media (min-width: 100ch) {
   h1::before {
     margin-left: -2ch;
@@ -220,31 +292,48 @@ h4::before {
   h4::before {
     margin-left: -5ch;
   }
+  h5::before {
+    margin-left: -6ch;
+  }
+  h6::before {
+    margin-left: -7ch;
+  }
 }
 
-b::before, b::after, strong::before, strong::after {
+b::before,
+b::after,
+strong::before,
+strong::after {
   content: "**";
   font-weight: normal;
   color: var(--markup);
 }
 
-i::before, i::after, em::before, em::after {
+i::before,
+i::after,
+em::before,
+em::after {
   content: "/";
   font-style: normal;
   color: var(--markup);
 }
 
-u::before, u::after {
+u::before,
+u::after {
   content: "__";
   font-style: normal;
   color: var(--markup);
 }
 
-s, del {
+s,
+del {
   text-decoration-color: var(--markup) !important;
 }
 
-s::before, s::after, del::before, del::after {
+s::before,
+s::after,
+del::before,
+del::after {
   content: "~~";
   color: var(--markup);
 }
@@ -254,7 +343,8 @@ code {
   border: 2px solid var(--separator);
 }
 
-code::before, code::after {
+code::before,
+code::after {
   content: "`";
   color: var(--markup);
 }
@@ -286,7 +376,7 @@ pre code::after {
 
 .shields {
   float: right;
-  text-align: right
+  text-align: right;
 }
 
 .chroma {
@@ -308,12 +398,13 @@ ol {
   list-style: none;
 }
 
-li ul, li ol {
+li ul,
+li ol {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-ul>li::before {
+ul > li::before {
   float: left;
   margin-left: -2ch;
   content: "*";
@@ -324,11 +415,11 @@ ol {
   counter-reset: rmd-ol;
 }
 
-ol>li {
+ol > li {
   counter-increment: rmd-ol;
 }
 
-ol>li::before {
+ol > li::before {
   float: left;
   margin-left: -3ch;
   min-width: 3ch;
@@ -361,16 +452,91 @@ input[type="checkbox"]:checked::after {
   left: 998ch;
 }
 
-blockquote>* {
+blockquote > * {
   margin-left: 3ch;
 }
 
-blockquote>*::before {
+blockquote > *::before {
   content: "> ";
   color: var(--markup);
   float: left;
   margin-left: -2ch;
   margin-right: 1ch;
+}
+
+/* Abbreviations */
+abbr {
+  text-decoration: dotted underline;
+  text-decoration-color: var(--markup);
+  cursor: help;
+  border-bottom: 1px dotted var(--markup);
+  text-decoration: none;
+}
+
+/* Footnotes */
+.footnote-ref {
+  text-decoration: none;
+  font-size: 0.8rem;
+  vertical-align: super;
+  color: var(--text);
+}
+
+.footnote-ref::before {
+  content: "[^";
+  color: var(--markup);
+}
+
+.footnote-ref::after {
+  content: "]";
+  color: var(--markup);
+}
+
+.footnote-ref:hover {
+  color: var(--hover);
+}
+
+.footnotes {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--separator);
+  font-size: 0.9rem;
+}
+
+.footnotes::before {
+  content: "Footnotes";
+  display: block;
+  font-weight: bold;
+  color: var(--heading);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.footnotes ol {
+  margin-left: 2ch;
+}
+
+.footnotes li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.footnotes li::marker {
+  color: var(--markup);
+}
+
+.footnote-backref {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--markup);
+  margin-left: 0.5ch;
+}
+
+.footnote-backref::before {
+  content: "↩";
+}
+
+.footnote-backref:hover {
+  color: var(--hover);
 }
 
 .header-wrapper {
@@ -426,6 +592,22 @@ footer .pagination {
 
 hr {
   clear: both;
+  border: none;
+  margin: 2rem 0;
+  position: relative;
+  height: 1rem;
+  overflow: visible;
+}
+
+hr::before {
+  content: "---";
+  color: var(--markup);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background);
+  padding: 0 1ch;
 }
 
 .page {
@@ -437,6 +619,11 @@ hr {
   margin-top: 6ex;
   margin-bottom: 1ex;
   font-size: 0.9rem;
+}
+
+.meta .post-author {
+  font-style: normal;
+  display: inline;
 }
 
 .meta .tags {

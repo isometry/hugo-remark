@@ -1,20 +1,19 @@
 {{ if or .NextInSection .PrevInSection }}
 <div class="pagination">
-    {{ with .PrevInSection }}
-    <div class="button previous">
-        <a href="{{ .RelPermalink }}" rel="prev">
-            <span class="button__icon">←</span>
-            <span class="button__text">{{ default .Title .LinkTitle }}</span>
-        </a>
-    </div>
-    {{ end }}
-    {{ with .NextInSection }}
-    <div class="button next">
-        <a href="{{ .RelPermalink }}" rel="next">
-            <span class="button__text">{{ default .Title .LinkTitle }}</span>
-            <span class="button__icon">→</span>
-        </a>
-    </div>
-    {{ end }}
+  {{ with .PrevInSection }}
+  <div class="button previous">
+    <a href="{{ .RelPermalink }}" rel="prev">
+      <span class="button__icon">←</span>
+      <span class="button__text">{{ default .Title .LinkTitle }}</span>
+    </a>
+  </div>
+  {{ end }} {{ with .NextInSection }}
+  <div class="button next">
+    <a href="{{ .RelPermalink }}" rel="next">
+      <span class="button__text">{{ default .Title .LinkTitle }}</span>
+      <span class="button__icon">→</span>
+    </a>
+  </div>
+  {{ end }}
 </div>
 {{ end }}

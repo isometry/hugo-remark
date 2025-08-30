@@ -1,15 +1,19 @@
 {{ define "main" }}
 <main>
-    <article class="page">
-        <div class="page-content">
-            <h1 class="page-title">{{.Title}}</h1>
-            {{.Content}}
-        </div>
-    </article>
-    <ul class="contents">
-        {{ range .Paginator.Pages }}
-        <li><a href="{{ .RelPermalink }}">{{ default .Title .LinkTitle | markdownify }}</a></li>
-        {{ end }}
-    </ul>
+  <article class="page">
+    <div class="page-content">
+      <h1 class="page-title">{{.Title}}</h1>
+      {{.Content}}
+    </div>
+  </article>
+  <ul class="contents">
+    {{ range .Paginator.Pages }}
+    <li>
+      <a href="{{ .RelPermalink }}"
+        >{{ default .Title .LinkTitle | markdownify }}</a
+      >
+    </li>
+    {{ end }}
+  </ul>
 </main>
 {{ end }}

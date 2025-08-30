@@ -8,19 +8,22 @@
 
         <div class="meta">
             {{ if .Params.date }}
-            <span class="post-date"
+            <time class="post-date" datetime="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}"
                 title="Published: {{ .PublishDate.Format "2006-01-02T15:04Z" }}{{ if .Lastmod }}; Last Modified: {{ .Lastmod.Format "2006-01-02T15:04Z" }}{{ end }}">
                 {{ .Date.Format "2006-01-02" }}
-            </span>
+            </time>
+            {{ end }}
+            {{ if .Params.author }}
+            <address class="post-author">by {{ .Params.author }}</address>
             {{ end }}
             <span class="permalink"><a href="{{ .Permalink }}" rel="bookmark">Permalink</a></span>
             {{ if .Params.tags }}
-            <span class="tags">
+            <nav class="tags" aria-label="Post tags">
                 <a href="/tags/">tags</a>:
                 {{ range .Params.tags }}
                 #<a href="{{ (urlize (printf "/tags/%s/" .)) }}" rel="tag" class="tag">{{ . }}</a>
                 {{ end }}
-            </span>
+            </nav>
             {{ end }}
         </div>
     </article>

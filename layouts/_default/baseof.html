@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
 
 <head>
     {{ block "head" . }}{{ partial "head.html" . }}{{ end }}
 </head>
 
 <body>
+    <a href="#main" class="skip-to-content">Skip to main content</a>
     {{ block "header" . }}{{ partial "header.html" . }}{{ end }}
-    {{ block "main" . }}{{ end }}
+    <div id="main">
+        {{ block "main" . }}{{ end }}
+    </div>
     {{ block "footer" . }}{{ partial "footer.html" . }}{{ end }}
     {{ block "analytics" . }}{{ partial "analytics.html" . }}{{ end }}
 </body>

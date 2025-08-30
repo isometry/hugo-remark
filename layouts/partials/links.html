@@ -1,6 +1,12 @@
 <div class="links">
-    {{- range .Site.Params.social }}
-    <a href="{{ .url }}" target="_blank" rel="noopener me"
-        title="{{ .name }}">{{ partial "fontawesome.html" .name }}</a>
-    {{ end -}}
+  {{- range .Site.Params.social }}
+  <a
+    href="{{ .url }}"
+    target="_blank"
+    rel="noopener noreferrer me"
+    title="{{ .name }}"
+    aria-label="{{ .name }} profile"
+    >{{ partial "fontawesome.html" .name }}</a
+  >
+  {{ end -}}
 </div>
